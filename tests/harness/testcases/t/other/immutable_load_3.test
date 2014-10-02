@@ -1,0 +1,17 @@
+--setup
+
+--test
+--start-query-logging
+
+create empty array bounded <a:int64>[x=0:10,5,0]
+--error  "load(bounded,'../tests/harness/testcases/data/unbounded_empty.txt')"
+
+
+ 
+scan(bounded)  
+
+
+--stop-query-logging
+--cleanup
+
+remove(bounded)
